@@ -1,0 +1,125 @@
+@import '../colors.scss';
+
+.container {
+  h2 {
+    margin: 8px 0px;
+  }
+  width: 95vw;
+  display: grid;
+  grid-template-columns: 1fr minmax(0, 1fr) 0.5fr;
+  grid-template-rows: 1fr;
+  gap: 0px 0px;
+  grid-template-areas: "submission kaizen-list user-list";
+  .column {
+    padding: 8px;
+  }
+}
+.submission {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  grid-area: submission;
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 90%;
+    align-items: center;
+    textarea {
+      width: 100%;
+      height: 18vh;
+      resize: vertical;
+    }
+    .buttons {
+      display: flex;
+      width: 100%;
+      justify-content: flex-end;
+      margin-top: 16px;
+      button {
+        margin-left: 16px;
+      }
+    }
+    // button {
+    //   margin-left: 16px;
+    // }
+  }
+  & > * {
+    margin: 8px 16px;
+  }
+}
+.kaizen-list {
+  grid-area: kaizen-list;
+  .kaizen {
+    background-color: $powder-blue;
+    color: $ming;
+    font-family: body;
+    font-size: 1.5rem;
+    padding: 8px 16px;
+    margin-bottom: 8px;
+    overflow: hidden;
+  }
+}
+.user-list {
+  grid-area: user-list;
+  .user {
+    background-color: $almond;
+    color: $taupe-gray;
+    background-color: $light-coral;
+    color: $amaranth-purple;
+    font-family: body;
+    font-size: 1.5rem;
+    padding: 8px 16px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .icon {
+      display: none;
+    }
+    &:hover {
+      .icon {
+        display: block;
+      }
+    }
+
+  }
+  .ready {
+    background-color: $powder-blue;
+    color: $ming;
+  }
+}
+
+.ahem {
+  background-color: black;
+  color: white;
+  font-size: 7rem;
+  z-index: 10;
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  left: 0;
+  font-family: body;
+  top: 0;
+  opacity: 1;
+  transition: opacity 2s ease-out;
+  .content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+}
+
+.ahem-visible {
+  top: 0;
+  opacity: 1;
+  // transition: opacity 2s ease-out;
+  // transition: opacity 2s linear;
+}
+
+.ahem-invisible {
+  top: -100%;
+  opacity: 0;
+  transition: opacity 1s ease-out;
+  // transition: opacity 2s linear;
+}

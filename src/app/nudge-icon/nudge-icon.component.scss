@@ -1,0 +1,10 @@
+@import '../colors.scss';
+
+svg {
+  height: 32px;
+  fill: $amaranth-purple;
+  &:hover {
+    fill: $almond;
+    cursor: pointer;
+  }
+}

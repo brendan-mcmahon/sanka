@@ -1,0 +1,37 @@
+<div class="container">
+  <h1 class="red">Sanka</h1>
+
+  <button class="primary" *ngIf="!showCreateDialog && !showJoinDialog" (click)="showCreateDialog = true; showJoinDialog = false;">Start a New Room</button>
+  <!-- <button *ngIf="!showCreateDialog && !showJoinDialog" (click)="showCreateDialog = false; showJoinDialog = true;">Join</button> -->
+
+  <form (ngSubmit)="create()" *ngIf="showCreateDialog" class="dialog">
+    <div class="text-field">
+      <label>Your Name:</label>
+      <input name="name" type="text" [(ngModel)]="name">
+      <div *ngIf="nameError" class="error">{{nameError}}</div>
+    </div>
+
+    <div class="buttons">
+      <button class="primary" type="submit">Submit</button>
+      <button class="secondary" (click)="showCreateDialog = false;">Cancel</button>
+    </div>
+  </form>
+
+  <form (ngSubmit)="join()" *ngIf="showJoinDialog" class="dialog">
+    <div class="text-field">
+      <label>Your Name:</label>
+      <input name="name" type="text" [(ngModel)]="name">
+      <div *ngIf="nameError" class="error">{{nameError}}</div>
+    </div>
+    <div class="text-field">
+      <label>Game Code:</label>
+      <input name="gameCode" type="text" [(ngModel)]="roomCode">
+      <div *ngIf="codeError" class="error">{{codeError}}</div>
+    </div>
+
+    <div class="buttons">
+      <button type="submit">Join</button>
+      <button class="red-button" (click)="showJoinDialog = false;">Cancel</button>
+    </div>
+  </form>
+</div>

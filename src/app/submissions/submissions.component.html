@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="submission column">
+    <h2 *ngIf="me">
+      Hi, {{me.name}}! Enter your Kaizen ideas here:
+    </h2>
+    <form (ngSubmit)="addKaizen()">
+      <textarea tabindex="1" [disabled]="!me || me.doneSubmitting" type="text" [(ngModel)]="kaizen" name="kaizen"></textarea>
+      <div class="buttons">
+        <button type="button" tabindex="-1" *ngIf="!me.doneSubmitting" class="primary" (click)="done()">I'm Done Submitting</button>
+        <button type="button" tabindex="-1" *ngIf="me.doneSubmitting" class="secondary" (click)="notDone()">Wait, I had another idea!</button>
+        <button tabindex="2" class="primary" type="submit">Submit</button>
+      </div>
+
+    </form>
+  </div>
+
+  <div class="kaizen-list column">
+    <h2>Kaizen Ideas:</h2>
+    <div class="kaizen" *ngFor="let kaizen of room.kaizens">
+      <span [style.visibility]="kaizen.userId === me.id ? 'visible' : 'hidden'">{{kaizen.text}}</span>
+    </div>
+  </div>
+
+  <div  class="user-list column" *ngIf="room">
+    <div [class.ready]="user.doneSubmitting" class="user" *ngFor="let user of room.users">
+      {{user.name}}
+
+      <fa-icon *ngIf="user.doneSubmitting" [icon]="checkMark"></fa-icon>
+      <app-nudge-icon (click)="nudge(user.id)" class="icon" [hide]="user.id === me.id || user.doneSubmitting"></app-nudge-icon>
+
+
+    </div>
+  </div>
+</div>
+
+
+<div [@ahem]="ahemVisible" *ngIf="ahemVisible" class="ahem">
+  <div class="content">
+    {{nudges[nudgeCount-1]}}
+  </div>
+</div>

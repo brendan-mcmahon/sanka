@@ -1,0 +1,27 @@
+<div [ngSwitch]="socketService.phase">
+    <div *ngSwitchCase="'submit'">
+    <app-submissions *ngIf="me && room" [me]="me" [room]="room" (doneSubmittingEvent)="doneSubmitting($event)" (addKaizenEvent)="addKaizen($event)"></app-submissions>
+    </div>
+
+    <div *ngSwitchCase="'vote'">
+    <app-votes *ngIf="me && room" [me]="me" [room]="room" (doneVotingEvent)="doneVoting($event)"></app-votes>
+  </div>
+</div>
+
+
+
+<div *ngIf="!joined" class="modal">
+  <div class="form-container">
+    <h2>We don't know who you are!</h2>
+    <form (ngSubmit)="addNameAndJoin()">
+      <div class="text-field">
+        <label>Enter your name to enter the room:</label>
+        <input [(ngModel)]="name" name="name">
+      </div>
+      <div class="buttons">
+        <button class="primary" type="submit">Join</button>
+        <button class="secondary" type="button" (click)="navigateHome()">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>

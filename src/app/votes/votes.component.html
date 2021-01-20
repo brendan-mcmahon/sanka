@@ -1,0 +1,43 @@
+<div class="container">
+
+  <div class="kaizen-list column">
+    <h2 *ngIf="me">
+      You have {{votes}} votes remaining
+    </h2>
+
+    <div class="kaizen-container" *ngFor="let kaizen of room.kaizens">
+      <button class="secondary" [disabled]="kaizen.votes === -3 || (kaizen.votes <= 0 && votes === 0) || doneVoting" (click)="downVote(kaizen)"><fa-icon [icon]="thumbsDown"></fa-icon></button>
+      <div class="kaizen">
+        <div class="kaizen-text">
+          {{kaizen.text}}
+        </div>
+        <div class="vote-count">{{kaizen.votes}}</div>
+      </div>
+      <button class="primary" [disabled]="kaizen.votes === 3 || (kaizen.votes >= 0 && votes === 0) || doneVoting" (click)="upVote(kaizen)"><fa-icon [icon]="thumbsUp"></fa-icon></button>
+
+    </div>
+
+    <div class="buttons">
+      <button *ngIf="sure && !me.doneVoting" class="primary" (click)="sure = false;">I'm Done Voting</button>
+      <h3 *ngIf="!sure && !me.doneVoting">Are you sure? Once you've voted, you cannot unvote.</h3>
+      <button *ngIf="!sure && !me.doneVoting" class="primary" (click)="done()">I'm sure</button>
+      <button *ngIf="!sure && !me.doneVoting" class="secondary" (click)="sure = true;">No wait, let me think about this.</button>
+      <h3 *ngIf="me.doneVoting">Thanks for voting! Nudge your teammates to hurry up.</h3>
+    </div>
+
+  </div>
+
+  <div class="user-list column" *ngIf="room">
+    <div [class.ready]="user.doneVoting" class="user" *ngFor="let user of room.users">
+      {{user.name}}
+      <fa-icon *ngIf="user.doneVoting" [icon]="checkMark"></fa-icon>
+      <app-nudge-icon (click)="nudge(user.id)" class="icon" [hide]="user.id === me.id || user.doneVoting"></app-nudge-icon>
+    </div>
+  </div>
+</div>
+
+<div [@ahem]="ahemVisible" *ngIf="ahemVisible" class="ahem">
+  <div class="content">
+    {{nudges[nudgeCount-1]}}
+  </div>
+</div>

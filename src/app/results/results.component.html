@@ -1,0 +1,36 @@
+<div class="container">
+  <h1 class="red">Your new Kaizen!</h1>
+  <div class="kaizen-list">
+    <div class="kaizen" *ngFor="let kaizen of results">
+      <div class="kaizen-text">
+        {{kaizen.text}}
+      </div>
+      <div class="vote-count">
+        {{kaizen.votes}}
+      </div>
+    </div>
+  </div>
+<!--
+  <div class="kaizen-list">
+    <div class="kaizen">
+      <div class="kaizen-text">
+        something
+      </div>
+      <div class="vote-count">3</div>
+    </div>
+
+    <div class="kaizen">
+      <div class="kaizen-text">
+        another something
+      </div>
+      <div class="vote-count">3</div>
+    </div>
+
+    <div class="kaizen">
+      <div class="kaizen-text">
+        a third, much longer, I mean way longer. Really really long thing. No, I mean it, it's soooooo long. way longer. Really really long thing. No, I mean it, it's soooooo long.
+      </div>
+      <div class="vote-count">3</div>
+    </div>
+  </div> -->
+</div>

@@ -1,0 +1,92 @@
+@import '../colors.scss';
+
+.container {
+  h2 {
+    margin: 8px 0px;
+  }
+  width: 95vw;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 0.5fr;
+  grid-template-rows: 1fr;
+  gap: 0px 0px;
+  grid-template-areas: "kaizen-list user-list";
+  .column {
+    padding: 8px;
+  }
+}
+
+.kaizen-list {
+  grid-area: kaizen-list;
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  .kaizen-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    button {
+      margin: 0px 16px;
+      &:disabled {
+        background-color: $taupe-gray;
+        color: $seashell;
+      }
+    }
+    .kaizen {
+      background-color: $powder-blue;
+      color: $ming;
+      font-family: body;
+      font-size: 1.5rem;
+      padding: 8px 16px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      .vote-count {
+        background-color: $ming;
+        color: $seashell;
+        padding: 4px;
+        border-radius: 50px;
+        width: 32px;
+        text-align: center;
+        min-width:32px;
+      }
+    }
+  }
+  .buttons {
+    display: flex;
+    justify-content: flex-end;
+    &>* {
+      margin-left: 24px;
+    }
+  }
+}
+.user-list {
+  grid-area: user-list;
+  .user {
+    background-color: $almond;
+    color: $taupe-gray;
+    background-color: $light-coral;
+    color: $amaranth-purple;
+    font-family: body;
+    font-size: 1.5rem;
+    padding: 8px 16px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .icon {
+      display: none;
+    }
+    &:hover {
+      .icon {
+        display: block;
+      }
+    }
+  }
+  .ready {
+    background-color: $powder-blue;
+    color: $ming;
+  }
+}

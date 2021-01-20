@@ -1,0 +1,105 @@
+@import './app/colors.scss';
+
+@font-face {
+  font-family: title;
+  src: url('./assets/fonts/Bacalisties.ttf');
+}
+
+@font-face {
+  font-family: body;
+  src: url('./assets/fonts/Mermaid1001.ttf');
+}
+
+body {
+  background-color: $seashell;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // background: rgb(52,115,117);
+  // background: linear-gradient(0deg, rgba(52,115,117,1) 0%, rgba(254,248,242,1) 37%);
+  // background-repeat: no-repeat;
+  // background-attachment: fixed;
+}
+
+h1 {
+  font-size: 5rem;
+}
+
+h1 {
+  font-family: title;
+}
+
+h2, h3, h4, p, label {
+  font-family: body;
+  color: $ming;
+}
+
+input, textarea {
+  font-family: body;
+  color: $amaranth-purple;
+  font-size: 2rem;
+  border: none;
+  background-color: $almond;
+  padding: 8px 16px;
+  border-radius: 4px;
+  &:focus {
+    outline: none;
+    border: solid darken($almond, 15) 2px;
+    border: solid $taupe-gray 2px;
+  }
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &-webkit-autofill:focus,
+  &-internal-autofill-selected {
+    background-color: $almond !important;
+    color: $amaranth-purple;
+  }
+}
+
+textarea {
+  font-size: 1.5rem;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .text-field {
+    display: flex;
+    flex-direction: column;
+  }
+  .buttons {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 16px;
+  }
+}
+.red {
+  color: $light-coral;
+}
+
+button {
+  outline: none;
+  border: none;
+  padding: 16px;
+  font-size: 1rem;
+  font-family: body;
+}
+
+.primary {
+  background-color: $powder-blue;
+  color: $ming;
+  &:focus, &:hover {
+    background-color: $ming;
+    color: white;
+  }
+}
+
+.secondary {
+  background-color: $light-coral;
+  color: $amaranth-purple;
+  &:focus, &:hover {
+    background-color: $amaranth-purple;
+    color: white;
+  }
+}
